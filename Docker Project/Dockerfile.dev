@@ -1,0 +1,18 @@
+#Build phase
+# set base image
+FROM node:18-alpine
+
+# Create the working directory
+WORKDIR /usr/app
+
+#copy files from the host to workdir
+COPY ./package.json /usr/app 
+
+# Instal dependencies for the app
+RUN npm install
+
+# copy  all things in container
+COPY ./ ./
+
+# Start the server
+CMD ["npm","run","start"]
